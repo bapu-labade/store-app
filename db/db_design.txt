@@ -1,0 +1,4 @@
+
+
+
+Product(id, name, description, price) 1---->* Review(id, rating, description, author)

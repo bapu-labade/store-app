@@ -40,3 +40,7 @@ gem 'spring',        group: :development
 
 gem 'rails_layout'
 gem 'bootstrap-sass'
+gem 'carrierwave'
+gem 'rmagick'
+gem 'pry' 
+gem 'rest-client'

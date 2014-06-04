@@ -1,7 +1,22 @@
  var myApp = angular.module('gemStore',[]);
 
-  myApp.controller('storeController', ['$scope', function($scope) {
-    $scope.products = gems;
+  myApp.controller('storeController', ['$scope','$http', function($scope,$http) {
+    // $scope.products = gems;
+    // loadPosts();
+
+    $http({method: 'GET', url: './get-product-list.json'}).
+      success(function(data, status, headers, config) {
+      // this callback will be called asynchronously
+      // when the response is available
+      $scope.products = data;
+      console.log("Successfully loaded products...");
+    }).error(function(data, status, headers, config) {
+      // called asynchronously if an error occurs
+      // or server returns response with an error status.
+      console.log("Error while loading products...");
+    });
+
+
   }]);
 
 
@@ -53,6 +68,22 @@
       templateUrl: "assets/product-specs.html"
     };
   });
+
+
+  // function loadPosts() {
+  //   $http({method: 'GET', url: './get-product-list.json'}).
+  //     success(function(data, status, headers, config) {
+  //     // this callback will be called asynchronously
+  //     // when the response is available
+  //     $scope.products = data;
+  //     console.log("Successfully loaded products...");
+  //   }).error(function(data, status, headers, config) {
+  //     // called asynchronously if an error occurs
+  //     // or server returns response with an error status.
+  //     console.log("Error while loading products...");
+  //   });
+  // }
+
 
 
   var gems = [{
